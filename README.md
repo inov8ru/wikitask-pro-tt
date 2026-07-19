@@ -110,4 +110,4 @@ Fonts: Newsreader (serif) / DM Sans (sans-serif) / JetBrains Mono (mono).
 
 ### License
 
-Open source. Contributions welcome.
+CC0. Everyone is free to use this tool without attributions.
