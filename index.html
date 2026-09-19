@@ -170,11 +170,11 @@ button{font-family:inherit;cursor:pointer}a{color:var(--blue);text-decoration:no
 
 <div class="screen" id="loading">
   <div class="spinner"></div>
-  <div class="load-status" id="loadStatus">Starting…</div>
+  <div class="load-status" id="loadStatus">Башлау…</div>
   <div class="load-sub" id="loadSub"></div>
   <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
   <div class="stages">
-    <div class="stg" id="s1"><span class="stg-dot"></span>Fetch edit history</div>
+    <div class="stg" id="s1"><span class="stg-dot"></span>Үзгәртүләр тарихын җыю</div>
     <div class="stg" id="s2"><span class="stg-dot"></span>Build deep profile</div>
     <div class="stg" id="s3"><span class="stg-dot"></span>Scan news &amp; trends</div>
     <div class="stg" id="s4"><span class="stg-dot"></span>Find standard gaps</div>
@@ -188,7 +188,7 @@ button{font-family:inherit;cursor:pointer}a{color:var(--blue);text-decoration:no
   <div id="newsBox"></div>
   <div id="trendingBox"></div>
   <div class="topics-wrap" id="topicsWrap"></div>
-  <div class="section-head"><span class="section-title">Tasks <span id="taskCount"></span></span><button class="btn-ghost" id="refreshBtn">↻ Refresh</button></div>
+  <div class="section-head"><span class="section-title">Мәсьәләләр <span id="taskCount"></span></span><button class="btn-ghost" id="refreshBtn">↻ Яңарту</button></div>
   <div class="filters" id="filters"></div>
   <div class="sort-row" id="sortRow"></div>
   <div class="tasks" id="tasksList"></div>
@@ -207,18 +207,18 @@ document.addEventListener('DOMContentLoaded',function(){
   $('refreshBtn').addEventListener('click',function(){regenerate()});
 });
 
-var WIKI='https://en.wikipedia.org/w/api.php';
+var WIKI='https://tt.wikipedia.org/w/api.php';
 function wikiGet(params){params.format='json';params.origin='*';return fetch(WIKI+'?'+new URLSearchParams(params)).then(function(r){if(!r.ok)throw new Error('API '+r.status);return r.json()})}
 function pvGet(path){return fetch('https://wikimedia.org/api/rest_v1'+path,{headers:{Accept:'application/json'}}).then(function(r){return r.ok?r.json():null}).catch(function(){return null})}
 
 /* ══════ TOPIC KEYWORDS ══════ */
 var TOPIC_KW={
-  medicine:['medic','disease','health','hospital','drug','pharma','anatomy','surg','radiol','pathol','diagnos','therap','clinic','symptom','syndrome','cancer','infect','epidem','virus','bacter'],
-  science:['science','physic','chemi','biolog','math','astrono','geolog','ecolog','genetic'],
-  technology:['technol','comput','software','internet','digital','program','engineer','robot'],
-  geography:['geograph','countr','city','cities','district','village','town','region','province'],
-  history:['histor','ancient','mediev','century','war ','empire','dynasty','colonial'],
-  culture:['cultur','music','film','art ','literat','novel','poet','theater','cinema'],
+  medicine:['медик','авыру','сәламәтлек','хастаханә','дару','фарма','анатомия','сург','радиол','патол','диагноз','терап','клиник','симптом','синдром','шеш','инфек','эпидем','вирус','бактер'],
+  science:['фән','физик','хими','биолог','матем','астроно','геолог','эколог','генетик'],
+  technology:['технол','компьют','software','интернет','диҗитал','програм','инженер','робот'],
+  geography:['географ','ил','шәһәр','дәүләт','мәхәллә','коммунна','штат','гмина','авыл','торак пункт','регион','провинция'],
+  history:['тарих','борынг','урта гасыр','гасыр','сугыш','импер','династи','колония'],
+  culture:['культур','мәдәният','музыка','көй','фильм','рәсем ','әдәби','новелл','шагыйр','театр','кинотеатр'],
   biography:['birth','death','people','person','biograph','living people','alumni'],
   education:['educat','universit','school','college','academ'],
   india:['india','kerala','tamil','hindi','bengal','mumbai','delhi','malay','karnatak'],
