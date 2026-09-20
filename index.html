@@ -158,10 +158,10 @@ button{font-family:inherit;cursor:pointer}a{color:var(--blue);text-decoration:no
   <h1>Википедиядәге эшчәнлек</h1>
   <p class="sub">Үзгәртүләрне тирәнтен анализлау, төрлек яңалыклар, мәкаләләрне структуралаштыру киңәшләре, чыганакларны тикшерү һәм башка күпсанлы тиз эшләнелә торган биремнәр.</p>
   <div class="feats">
-    <div class="feat"><b><svg class="icon"><use href="#i-user"/></svg> Тирәнтен шәхсиләштерү</b>Осталык дәрәҗәсе, география фокусы, үзгәртләр ясау тизлеге, сыйфатлылык дәрәҗәсе, яллар/эш көннәре, үзгәртелүче мәкаләләрнең искелеге</div>
-    <div class="feat"><b><svg class="icon"><use href="#i-zap"/></svg> 20+ Тиз җиңү төре</b>Ялгыз мәкаләләр, үксез мәкаләләр, дөрес бизәлмәгән URL адреслары, күпмәгънәлекне чишү сылтамалары, координатлар, төркемнәр, BLP, викиләштерү, кыска тасвирламалар</div>
-    <div class="feat"><b><svg class="icon"><use href="#i-eye"/></svg> Күзәтү исемлеге искәртүләре</b>Сез кайчандыр үзгәрткән, ләкин хәзергә сыйфатлылыгы төшкән мәкаләләр — керткән үзгәртүләрегездән соң барлыкка килгән яңа читенлекләр</div>
-    <div class="feat"><b><svg class="icon"><use href="#i-book"/></svg> Үзгәртүләр буенча күрсәтмәләр + Чыганаклар</b>Бүлекләрне анализлау, җитмәгән контентны табу, Semantic Scholar чыганагыннан язмалар, CrossRef &amp; PubMed</div>
+    <div class="feat"><b><svg class="icon"><use href="#i-user"/></svg> Шәхси мәгълүмат</b>Осталык дәрәҗәсе, география фокусы, үзгәртләр ясау тизлеге, сыйфатлылык дәрәҗәсе, яллар/эш көннәре, үзгәртелүче мәкаләләрнең искелеге</div>
+    <div class="feat"><b><svg class="icon"><use href="#i-zap"/></svg> 20+ Тиз эшчәнлек төре</b>Ялгыз мәкаләләр, үксез мәкаләләр, дөрес бизәлмәгән URL адреслары, күпмәгънәлекне чишү сылтамалары, координатлар, төркемнәр, BLP, викиләштерү, кыска тасвирламалар</div>
+    <div class="feat"><b><svg class="icon"><use href="#i-eye"/></svg> Күзәтү исемлеге</b>Сез кайчандыр үзгәрткән, ләкин хәзергә сыйфатлылыгы төшкән мәкаләләр — керткән үзгәртүләрегездән соң барлыкка килгән яңа читенлекләр</div>
+    <div class="feat"><b><svg class="icon"><use href="#i-book"/></svg> Күрсәтмәләр + Чыганаклар</b>Бүлекләрне анализлау, җитмәгән контентны табу, Semantic Scholar чыганагыннан язмалар, CrossRef &amp; PubMed</div>
   </div>
   <div class="form-row"><input id="userInput" placeholder="Wikipedia username" autocapitalize="off" autocorrect="off" spellcheck="false"><button class="btn btn-red" id="goBtn">Башлау</button></div>
   <div class="hint">MediaWiki + Битне караулар + Semantic Scholar + CrossRef + PubMed API интерфейслары</div>
@@ -363,7 +363,7 @@ function buildDeepProfile(contribs,catMap,pageInfo){
   // Revert rate (quality signal)
   var revertCount=(editTypes.revert||0);
   var revertRate=revertCount/Math.max(totalEdits,1);
-  var qualityTier=revertRate<.02?'high':revertRate<.06?'medium':'developing';
+  var qualityTier=revertRate<.02?'югары':revertRate<.06?'уртача':'булдырыла';
 
   // Edit recency — how active recently?
   var now2=Date.now();
