@@ -159,12 +159,12 @@ button{font-family:inherit;cursor:pointer}a{color:var(--blue);text-decoration:no
   <p class="sub">Үзгәртүләрне тирәнтен анализлау, төрлек яңалыклар, мәкаләләрне структуралаштыру киңәшләре, чыганакларны тикшерү һәм башка күпсанлы тиз эшләнелә торган биремнәр.</p>
   <div class="feats">
     <div class="feat"><b><svg class="icon"><use href="#i-user"/></svg> Тирәнтен шәхсиләштерү</b>Осталык дәрәҗәсе, география фокусы, үзгәртләр ясау тизлеге, сыйфатлылык дәрәҗәсе, яллар/эш көннәре, үзгәртелүче мәкаләләрнең искелеге</div>
-    <div class="feat"><b><svg class="icon"><use href="#i-zap"/></svg> 20+ Тиз җиңү төре</b>Ялгыз мәкаләләр, үксез мәкаләләр, дөрес бизәлмәгән URL адреслары, күмәгънәлекне чишү сылтамалары, координатлар, төркемнәр, BLP, wikify, short descriptions</div>
-    <div class="feat"><b><svg class="icon"><use href="#i-eye"/></svg> Watchlist Alerts</b>Your past articles that have degraded — new issues flagged since you last edited</div>
-    <div class="feat"><b><svg class="icon"><use href="#i-book"/></svg> Edit Guides + References</b>Section analysis, missing content detection, papers from Semantic Scholar, CrossRef &amp; PubMed</div>
+    <div class="feat"><b><svg class="icon"><use href="#i-zap"/></svg> 20+ Тиз җиңү төре</b>Ялгыз мәкаләләр, үксез мәкаләләр, дөрес бизәлмәгән URL адреслары, күпмәгънәлекне чишү сылтамалары, координатлар, төркемнәр, BLP, викиләштерү, кыска тасвирламалар</div>
+    <div class="feat"><b><svg class="icon"><use href="#i-eye"/></svg> Күзәтү исемлеге искәртүләре</b>Сез кайчандыр үзгәрткән, ләкин хәзергә сыйфатлылыгы төшкән мәкаләләр — керткән үзгәртүләрегездән соң барлыкка килгән яңа читенлекләр</div>
+    <div class="feat"><b><svg class="icon"><use href="#i-book"/></svg> Үзгәртүләр буенча күрсәтмәләр + Чыганаклар</b>Бүлекләрне анализлау, җитмәгән контентны табу, Semantic Scholar чыганагыннан язмалар, CrossRef &amp; PubMed</div>
   </div>
-  <div class="form-row"><input id="userInput" placeholder="Wikipedia username" autocapitalize="off" autocorrect="off" spellcheck="false"><button class="btn btn-red" id="goBtn">Go</button></div>
-  <div class="hint">MediaWiki + Pageviews + Semantic Scholar + CrossRef + PubMed APIs</div>
+  <div class="form-row"><input id="userInput" placeholder="Wikipedia username" autocapitalize="off" autocorrect="off" spellcheck="false"><button class="btn btn-red" id="goBtn">Башлау</button></div>
+  <div class="hint">MediaWiki + Битне караулар + Semantic Scholar + CrossRef + PubMed API интерфейслары</div>
   <div class="err-msg" id="errMsg"></div>
 </div>
 
@@ -175,11 +175,11 @@ button{font-family:inherit;cursor:pointer}a{color:var(--blue);text-decoration:no
   <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
   <div class="stages">
     <div class="stg" id="s1"><span class="stg-dot"></span>Үзгәртүләр тарихын җыю</div>
-    <div class="stg" id="s2"><span class="stg-dot"></span>Build deep profile</div>
-    <div class="stg" id="s3"><span class="stg-dot"></span>Scan news &amp; trends</div>
-    <div class="stg" id="s4"><span class="stg-dot"></span>Find standard gaps</div>
-    <div class="stg" id="s5"><span class="stg-dot"></span>Find low-hanging fruit</div>
-    <div class="stg" id="s6"><span class="stg-dot"></span>Analyze &amp; score</div>
+    <div class="stg" id="s2"><span class="stg-dot"></span>Тулы профильне төзү</div>
+    <div class="stg" id="s3"><span class="stg-dot"></span>Яңалыкларны һәм трендларны тикшерү</div>
+    <div class="stg" id="s4"><span class="stg-dot"></span>Гадәттәге бушлыкларны эзләү</div>
+    <div class="stg" id="s5"><span class="stg-dot"></span>Иң файдалы кертемнәрне эзләү</div>
+    <div class="stg" id="s6"><span class="stg-dot"></span>Анализлау һәм күрсәткечләр</div>
   </div>
 </div>
 
@@ -218,13 +218,13 @@ var TOPIC_KW={
   technology:['технол','компьют','software','интернет','диҗитал','програм','инженер','робот'],
   geography:['географ','ил','шәһәр','дәүләт','мәхәллә','коммунна','штат','гмина','авыл','торак пункт','регион','провинция'],
   history:['тарих','борынг','урта гасыр','гасыр','сугыш','импер','династи','колония'],
-  culture:['культур','мәдәният','музыка','көй','фильм','рәсем ','әдәби','новелл','шагыйр','театр','кинотеатр'],
-  biography:['birth','death','people','person','biograph','living people','alumni'],
-  education:['educat','universit','school','college','academ'],
-  india:['india','kerala','tamil','hindi','bengal','mumbai','delhi','malay','karnatak'],
-  politics:['politic','govern','election','parliament','president','minister'],
-  sports:['sport','football','cricket','basketball','olympic','athlet','soccer'],
-  environment:['environ','climate','conserv','species','wildlife','ocean','forest']
+  culture:['культур','мәдәни','музыка','көй','фильм','рәсем ','әдәби','новелл','шагыйр','театр','кинотеатр'],
+  biography:['туган','үлгән','халык','шәхес','тәрҗемәи','биографи','яшәүче'],
+  education:['укыган','университ','мәктәп','көллият','академ','мәдрәсә','укый'],
+  india:['һинд','керала','тамил','бенгал','мумбаи','делһи','карнатак'],
+  politics:['сәяәс','хаким','сайлаулар','республик','җөмһүрият','политик','парламент','президент','рәис','министр'],
+  sports:['спорт','футбол','крикет','баскетбол','олимпик','атлет','йөзү'],
+  environment:['тирә','мөһит','климат','консерв','төрләр','табиг','океан','диңгез','урман']
 };
 
 /* ══════ STAGE 1: FETCH CONTRIBS ══════ */
@@ -236,7 +236,7 @@ function fetchContribs(user,limit){
     if(cont)p.uccontinue=cont;
     return wikiGet(p).then(function(d){
       var c=(d&&d.query&&d.query.usercontribs)||[];
-      if(!c.length){if(!all.length)throw new Error('No edits found for "'+user+'".');return all.slice(0,limit)}
+      if(!c.length){if(!all.length)throw new Error('"'+user+'" ясаган бернинди кертем дә табылмады.');return all.slice(0,limit)}
       all=all.concat(c);batch++;
       $('loadSub').textContent=all.length+' edits (batch '+batch+')';
       $('progFill').style.width=Math.min(all.length/limit*30,28)+'%';
@@ -307,16 +307,16 @@ function buildDeepProfile(contribs,catMap,pageInfo){
   // ─── PERSONALIZATION SIGNALS ───
   // Skill level detection
   var totalEdits=contribs.length;
-  var skillLevel=totalEdits>5000?'expert':totalEdits>1000?'advanced':totalEdits>200?'intermediate':'beginner';
+  var skillLevel=totalEdits>5000?'эксперт':totalEdits>1000?'белгеч':totalEdits>200?'белемле':'башлаучы';
 
   // Edit complexity preference
   var avgDiff=arts.reduce(function(s,c){return s+Math.abs(c.sizediff||0)},0)/(arts.length||1);
-  var complexityPref=avgDiff>300?'heavy':avgDiff>100?'medium':'light';
+  var complexityPref=avgDiff>300?'катлаулы':avgDiff>100?'уртача':'җиңел';
 
   // Preferred article sizes (what size articles does user typically edit?)
   var artSizes=Object.entries(pageInfo).filter(function(e){return pageCounts[e[0]]}).map(function(e){return e[1].length});
   var avgArtSize=artSizes.length?Math.round(artSizes.reduce(function(a,b){return a+b},0)/artSizes.length):5000;
-  var prefArticleSize=avgArtSize<3000?'short':avgArtSize<10000?'medium':'long';
+  var prefArticleSize=avgArtSize<3000?'кыска':avgArtSize<10000?'уртача':'озын';
 
   // Namespace distribution
   var nsDist={};contribs.forEach(function(c){var ns=c.ns||0;nsDist[ns]=(nsDist[ns]||0)+1});
@@ -340,16 +340,16 @@ function buildDeepProfile(contribs,catMap,pageInfo){
 
   // Skills detected
   var skills=[];
-  if((editTypes.references||0)>totalEdits*.1)skills.push({name:'Referencing',level:'expert'});
-  if((editTypes.copyedit||0)>totalEdits*.08)skills.push({name:'Copyediting',level:'expert'});
-  if((editTypes.media||0)>totalEdits*.05)skills.push({name:'Media/Images',level:'good'});
-  if((editTypes.stub_work||0)>totalEdits*.1)skills.push({name:'Stub expansion',level:'expert'});
-  if((editTypes.categorization||0)>totalEdits*.05)skills.push({name:'Categorization',level:'good'});
-  if((editTypes.template||0)>totalEdits*.05)skills.push({name:'Templates',level:'good'});
-  if((editTypes.creation||0)>10)skills.push({name:'Article creation',level:creations>50?'expert':'good'});
-  if(isMaintWorker)skills.push({name:'Maintenance',level:'expert'});
-  if((editTypes.major_add||0)>totalEdits*.15)skills.push({name:'Content writing',level:'expert'});
-  if(skills.length===0)skills.push({name:'General editing',level:'learning'});
+  if((editTypes.references||0)>totalEdits*.1)skills.push({name:'Чыганакларны өстәү буенча',level:'эксперт'});
+  if((editTypes.copyedit||0)>totalEdits*.08)skills.push({name:'Күчереп алып кертү буенча',level:'эксперт'});
+  if((editTypes.media||0)>totalEdits*.05)skills.push({name:'Медиа/Сурәтләр',level:'яхшы'});
+  if((editTypes.stub_work||0)>totalEdits*.1)skills.push({name:'Калыплар белән эшләү буенча',level:'эксперт'});
+  if((editTypes.categorization||0)>totalEdits*.05)skills.push({name:'Төркемләү',level:'яхшы'});
+  if((editTypes.template||0)>totalEdits*.05)skills.push({name:'Калыплар',level:'яхшы'});
+  if((editTypes.creation||0)>10)skills.push({name:'Мәкаләләрне булдыру',level:creations>50?'эксперт':'яхшы'});
+  if(isMaintWorker)skills.push({name:'Maintenance',level:'эксперт'});
+  if((editTypes.major_add||0)>totalEdits*.15)skills.push({name:'Контент язу',level:'эксперт'});
+  if(skills.length===0)skills.push({name:'General editing',level:'өйрәнү'});
 
   // Articles user created (for follow-up detection)
   var createdArticles=contribs.filter(function(c){return(c.ns||0)===0&&classifyEdit(c.comment,c.tags,c.sizediff)==='creation'}).map(function(c){return c.title});
