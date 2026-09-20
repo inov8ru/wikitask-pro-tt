@@ -163,7 +163,7 @@ button{font-family:inherit;cursor:pointer}a{color:var(--blue);text-decoration:no
     <div class="feat"><b><svg class="icon"><use href="#i-eye"/></svg> Күзәтү исемлеге</b>Сез кайчандыр үзгәрткән, ләкин хәзергә сыйфатлылыгы төшкән мәкаләләр — керткән үзгәртүләрегездән соң барлыкка килгән яңа читенлекләр</div>
     <div class="feat"><b><svg class="icon"><use href="#i-book"/></svg> Күрсәтмәләр + Чыганаклар</b>Бүлекләрне анализлау, җитмәгән контентны табу, Semantic Scholar чыганагыннан язмалар, CrossRef &amp; PubMed</div>
   </div>
-  <div class="form-row"><input id="userInput" placeholder="Wikipedia username" autocapitalize="off" autocorrect="off" spellcheck="false"><button class="btn btn-red" id="goBtn">Башлау</button></div>
+  <div class="form-row"><input id="userInput" placeholder="Википедиядәге исем" autocapitalize="off" autocorrect="off" spellcheck="false"><button class="btn btn-red" id="goBtn">Башлау</button></div>
   <div class="hint">MediaWiki + Битне караулар + Semantic Scholar + CrossRef + PubMed API интерфейслары</div>
   <div class="err-msg" id="errMsg"></div>
 </div>
@@ -316,7 +316,7 @@ function buildDeepProfile(contribs,catMap,pageInfo){
   // Preferred article sizes (what size articles does user typically edit?)
   var artSizes=Object.entries(pageInfo).filter(function(e){return pageCounts[e[0]]}).map(function(e){return e[1].length});
   var avgArtSize=artSizes.length?Math.round(artSizes.reduce(function(a,b){return a+b},0)/artSizes.length):5000;
-  var prefArticleSize=avgArtSize<3000?'кыска':avgArtSize<10000?'уртача':'озын';
+  var prefArticleSize=avgArtSize<3000?'кыска':avgArtSize<10000?'уртача зурлыктагы':'озын';
 
   // Namespace distribution
   var nsDist={};contribs.forEach(function(c){var ns=c.ns||0;nsDist[ns]=(nsDist[ns]||0)+1});
@@ -915,9 +915,9 @@ function enrichAndScore(tasks,prof){
       if(t.type==='watchlist')personBonus+=.14; // High priority — user's own articles degrading
       // Prefer articles matching user's preferred size range
       if(artSize>0){
-        if(prof.prefArticleSize==='short'&&artSize<5000)personBonus+=.05;
-        else if(prof.prefArticleSize==='medium'&&artSize>=3000&&artSize<15000)personBonus+=.05;
-        else if(prof.prefArticleSize==='long'&&artSize>=10000)personBonus+=.05;
+        if(prof.prefArticleSize==='кыска'&&artSize<5000)personBonus+=.05;
+        else if(prof.prefArticleSize==='уртача зурлыктагы'&&artSize>=3000&&artSize<15000)personBonus+=.05;
+        else if(prof.prefArticleSize==='озын'&&artSize>=10000)personBonus+=.05;
       }
       // Returning editor boost — easy tasks to ease back in
       if(prof.isReturning&&t.isQuick)personBonus+=.08;
@@ -1044,25 +1044,25 @@ function renderDashboard(){
   var topTopic=Object.entries(profile.topics).sort(function(a,b){return b[1]-a[1]})[0];
   var skillColors={expert:'sb-expert',good:'sb-good',learning:'sb-learning'};
   $('profileCard').innerHTML='<div class="profile-card fade"><div class="pc-row">'+
-    [{n:profile.total.toLocaleString(),l:'Edits'},{n:profile.uniqueArticles.toLocaleString(),l:'Articles'},{n:topTopic?cap(topTopic[0]):'—',l:'Top Topic'},
-     {n:cap(profile.skillLevel),l:'Skill Level'},{n:profile.editsPerWeek+'/wk',l:'Velocity'},{n:cap(profile.qualityTier),l:'Quality'}]
+    [{n:profile.total.toLocaleString(),l:'Үгәртүләр'},{n:profile.uniqueArticles.toLocaleString(),l:'Мәкаләләр'},{n:topTopic?cap(topTopic[0]):'—',l:'Төп тема'},
+     {n:cap(profile.skillLevel),l:'Осталык дәрәҗәсе'},{n:profile.editsPerWeek+'/атн',l:'Тизлек'},{n:cap(profile.qualityTier),l:'Сыйфатлылык'}]
     .map(function(s){return'<div class="pc-stat"><div class="pc-num">'+s.n+'</div><div class="pc-label">'+s.l+'</div></div>'}).join('')+'</div>'+
-    '<div class="pc-section"><div class="pc-section-title">Your Skills</div><div class="skill-badges">'+
+    '<div class="pc-section"><div class="pc-section-title">Осталыкларыгыз</div><div class="skill-badges">'+
     profile.skills.map(function(s){return'<span class="skill-badge '+(skillColors[s.level]||'')+'">'+s.name+'</span>'}).join('')+'</div></div>'+
-    '<div class="pc-section"><div class="pc-section-title">Preferences Detected</div><div class="pref-row">'+
-    [profile.isReturning?'Returning after '+profile.daysSinceLastEdit+'d':null,
-     profile.recentActivity==='very_active'?'Very active':profile.recentActivity==='active'?'Active':null,
-     profile.quickEditRatio>.4?'Prefers quick edits':null,
-     profile.isMaintWorker?'Maintenance worker':null,
-     profile.creatorScore>.05?'Article creator':'Improver',
-     'Prefers '+profile.prefArticleSize+' articles',
-     profile.isWeekendEditor?'Weekend editor':'Weekday editor',
-     profile.prefArticleAge!=='mixed'?'Prefers '+(profile.prefArticleAge==='old'?'established':'newer')+' articles':null,
+    '<div class="pc-section"><div class="pc-section-title">Нәрсәгә өстенлек бирелә</div><div class="pref-row">'+
+    [profile.isReturning?'Үзгәртүләргә '+profile.daysSinceLastEdit+'көннән соң кайтты':null,
+     profile.recentActivity==='very_active'?'Бик актив':profile.recentActivity==='active'?'Актив':null,
+     profile.quickEditRatio>.4?'Кыска төзәтмәләр':null,
+     profile.isMaintWorker?'Maintenance эшчәнлек':null,
+     profile.creatorScore>.05?'Мәкаләләрне булдыру':'Яхшыртучы',
+     'Гадәттә '+profile.prefArticleSize+' мәкаләләр',
+     profile.isWeekendEditor?'Ял көннәре':'Эш көннәре',
+     profile.prefArticleAge!=='mixed'?(profile.prefArticleAge==='old'?'Күптәнге':'Яңарак')+' мәкаләләр':null,
      profile.topGeo&&profile.topGeo.length?'Focus: '+profile.topGeo.map(function(g){return cap(g[0])}).join(', '):null,
-     profile.usesVisualEditor?'Visual Editor user':null,
-     profile.usesMobile?'Mobile editor':null,
-     profile.isHighTrafficEditor?'High-traffic articles':null,
-     'Avg edit: \u00b1'+profile.avgDiff+' chars',
+     profile.usesVisualEditor?'Күрсәтмәле Редактор кулланучы':null,
+     profile.usesMobile?'Мобиль җайланмадан үзгәртү':null,
+     profile.isHighTrafficEditor?'Күп трафиклы мәкаләләр':null,
+     'Урт. үзгәртү: \u00b1'+profile.avgDiff+' симв.',
      profile.bestSession?'Peak: '+cap(profile.bestSession[0]):null]
     .filter(Boolean).map(function(p){return'<span class="pref-item">'+p+'</span>'}).join('')+'</div></div></div>';
 
